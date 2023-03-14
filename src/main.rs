@@ -30,8 +30,8 @@ fn monte_carlo_run(iterations: usize) -> f64 {
     let mut rng = rand::thread_rng();
     let circle_hits: usize = (0..iterations)
         .map(|_| {
-            let x: f64 = rng.gen_range(0.0..2.0) - 1.;
-            let y: f64 = rng.gen_range(0.0..2.0) - 1.;
+            let x: f64 = rng.gen();
+            let y: f64 = rng.gen();
             if (x * x + y * y).sqrt() < 1. {
                 return 1;
             }
