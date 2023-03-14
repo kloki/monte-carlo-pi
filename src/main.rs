@@ -1,15 +1,28 @@
+use clap::Parser;
 use rand::Rng;
 use rayon::prelude::*;
 
-fn main() {
-    let threads = 100;
-    let iterations = 1000000;
+/// approximate Pi using a Monte Carlo Method. DONT USE THIS.
+#[derive(Parser, Debug)]
+#[command(author, version, about, long_about = None)]
+struct Args {
+    /// Amount of threads
+    #[arg(short, long, default_value_t = 16)]
+    threads: usize,
 
-    let pi: f64 = (0..threads)
+    /// Iteration per thread
+    #[arg(short, long, default_value_t = 100000)]
+    iterations: usize,
+}
+
+fn main() {
+    let args = Args::parse();
+
+    let pi: f64 = (0..args.threads)
         .into_par_iter()
-        .map(|_| monte_carlo_run(iterations))
+        .map(|_| monte_carlo_run(args.iterations))
         .sum::<f64>()
-        / threads as f64;
+        / args.threads as f64;
     println!(" 🎰 🥧 {}", pi);
 }
 
