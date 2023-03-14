@@ -1,7 +1,16 @@
 use rand::Rng;
+use rayon::prelude::*;
 
 fn main() {
-    println!(" 🎰 🥧 {}", monte_carlo_run(100000000));
+    let threads = 100;
+    let iterations = 1000000;
+
+    let pi: f64 = (0..threads)
+        .into_par_iter()
+        .map(|_| monte_carlo_run(iterations))
+        .sum::<f64>()
+        / threads as f64;
+    println!(" 🎰 🥧 {}", pi);
 }
 
 fn monte_carlo_run(iterations: usize) -> f64 {
