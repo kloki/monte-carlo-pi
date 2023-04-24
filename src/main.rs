@@ -7,11 +7,11 @@ use rayon::prelude::*;
 #[command(author, version, about, long_about = None)]
 struct Args {
     /// Amount of threads
-    #[arg(short, long, default_value_t = 16)]
+    #[arg(short, long, default_value_t = 16, env = "THREADS")]
     threads: usize,
 
     /// Iteration per thread
-    #[arg(short, long, default_value_t = 100000)]
+    #[arg(short, long, default_value_t = 100000, env = "ITERATIONS")]
     iterations: usize,
 }
 
