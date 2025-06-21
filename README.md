@@ -1,5 +1,14 @@
 # monte-carlo-pi
 
+## Install and run
+
 ```
-cargo run
+cargo install mc-pi
+mc-pi
+```
+
+## More options
+
+```
+mc-pi --help
 ```
