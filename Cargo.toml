@@ -1,5 +1,5 @@
 [package]
-name = "monte-carlo-pi"
+name = "mc-pi"
 version = "0.1.0"
 edition = "2024"
 description = "Generate PI using Monte Carlo. Don't use this."
