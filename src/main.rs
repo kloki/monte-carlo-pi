@@ -11,7 +11,7 @@ pub fn progress_bar() -> ProgressBar {
     bar.set_style(
         ProgressStyle::with_template("{spinner} {msg}")
             .unwrap()
-            .tick_strings(&["🙈", "🙉", "🙊"]),
+            .tick_strings(&["🙈", "🙉", "🙊", "🙊"]),
     );
     bar
 }
